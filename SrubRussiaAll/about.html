@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>О компании Сруб России - 25 лет традиций деревянного зодчества</title>
+    <meta name="description" content="Сруб России: 25 лет создаем дома-наследие из рубленного бревна. Наша философия, команда и принципы работы.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="О компании Сруб России">
+    <meta property="og:description" content="25 лет традиций в деревянном зодчестве">
+    <meta property="og:image" content="images/about-hero-alt.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* === НОВАЯ СТРУКТУРА СТРАНИЦЫ === */
+        
+        /* Таймлайн история */
+        .timeline {
+            position: relative;
+            padding: 120px 0;
+            background: var(--color-bg-light);
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, 
+                transparent 0%,
+                var(--color-gold) 10%,
+                var(--color-gold) 90%,
+                transparent 100%
+            );
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 45%;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .timeline-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            padding-left: 60px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-right: 60px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--color-bg);
+            border: 3px solid var(--color-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(193, 171, 97, 0.2);
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            left: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            right: -10px;
+        }
+        
+        .timeline-year {
+            font-size: 24px;
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-shadow: 0 0 20px rgba(193, 171, 97, 0.3);
+        }
+        
+        .timeline-content {
+            background: var(--color-bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .timeline-title {
+            font-size: 20px;
+            color: var(--color-white);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .timeline-text {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+        }
+        
+        /* Галерея команды */
+        .team-showcase {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .team-main {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 600px;
+        }
+        
+        .team-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-main:hover img {
+            transform: scale(1.05);
+        }
+        
+        .team-main-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(180deg, transparent 0%, rgba(22, 21, 16, 0.9) 100%);
+        }
+        
+        .team-main-name {
+            font-size: 28px;
+            color: var(--color-white);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .team-main-role {
+            font-size: 16px;
+            color: var(--color-gold);
+        }
+        
+        .team-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .team-member-small {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .team-member-small:hover {
+            background: rgba(193, 171, 97, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .team-member-small.active {
+            border: 2px solid var(--color-gold);
+            background: rgba(193, 171, 97, 0.05);
+        }
+        
+        .team-member-small img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .team-member-info h4 {
+            font-size: 16px;
+            color: var(--color-white);
+            margin-bottom: 4px;
+        }
+        
+        .team-member-info p {
+            font-size: 14px;
+            color: var(--color-gray);
+        }
+        
+        /* Стилизованный блок с цитатой */
+        .quote-block {
+            position: relative;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(193, 171, 97, 0.05) 0%, transparent 100%);
+        }
+        
+        .quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+        
+        .quote-icon {
+            font-size: 80px;
+            color: var(--color-gold);
+            opacity: 0.3;
+            margin-bottom: 40px;
+            display: block;
+        }
+        
+        .quote-text {
+            font-size: 24px;
+            line-height: 1.6;
+            color: var(--color-white);
+            font-style: italic;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 0 40px;
+        }
+        
+        .quote-author {
+            font-size: 18px;
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+        
+        .quote-role {
+            font-size: 14px;
+            color: var(--color-gray);
+            margin-top: 4px;
+        }
+        
+        /* Карта покрытия */
+        .coverage-map {
+            position: relative;
+            padding: 100px 0;
+            background: var(--color-bg-light);
+        }
+        
+        .map-container {
+            position: relative;
+            height: 400px;
+            background: var(--color-bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(22, 21, 16, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .map-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .map-stat-number {
+            font-size: 36px;
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .map-stat-label {
+            font-size: 14px;
+            color: var(--color-gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Интерактивные карточки технологий */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .tech-card {
+            background: var(--color-bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+        }
+        
+        .tech-icon {
+            font-size: 48px;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .tech-content {
+            padding: 40px;
+        }
+        
+        .tech-title {
+            font-size: 20px;
+            color: var(--color-white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .tech-description {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .tech-details {
+            font-size: 14px;
+            color: var(--color-gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-details:hover {
+            gap: 12px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .team-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-main {
+                height: 400px;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+            }
+            
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: 20px;
+                right: auto;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-text {
+                font-size: 20px;
+                padding: 0;
+            }
+            
+            .map-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-main-overlay {
+                padding: 20px;
+            }
+            
+            .team-main-name {
+                font-size: 22px;
+            }
+            
+            .tech-content {
+                padding: 30px 20px;
+            }
+            
+            .quote-text {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-to-main">Перейти к основному содержанию</a>
+
+    <!-- Header с улучшенной навигацией -->
+    <header class="header" id="header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Сруб России - Главная страница">
+                <svg class="logo-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M24 4V44M4 14L44 34M44 14L4 34" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-srub">Сруб</span>
+                    <span class="logo-russia">России</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Основная навигация">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="about.html" class="nav-link active dropdown-toggle">О компании</a>
+                        <div class="dropdown-menu">
+                            <a href="#history" class="dropdown-item">Наша история</a>
+                            <a href="#philosophy" class="dropdown-item">Философия</a>
+                            <a href="#team" class="dropdown-item">Команда</a>
+                            <a href="#technologies" class="dropdown-item">Технологии</a>
+                            <a href="#certificates" class="dropdown-item">Сертификаты</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link dropdown-toggle">Услуги</a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#houses" class="dropdown-item">Дома из сруба</a>
+                            <a href="services.html#bathhouses" class="dropdown-item">Бани</a>
+                            <a href="services.html#projects" class="dropdown-item">Проектирование</a>
+                            <a href="services.html#construction" class="dropdown-item">Строительство</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="features.html" class="nav-link dropdown-toggle">Преимущества</a>
+                        <div class="dropdown-menu">
+                            <a href="features.html#quality" class="dropdown-item">Качество материалов</a>
+                            <a href="features.html#experience" class="dropdown-item">25 лет опыта</a>
+                            <a href="features.html#warranty" class="dropdown-item">Гарантия 10 лет</a>
+                            <a href="features.html#ecology" class="dropdown-item">Экологичность</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="projects.html" class="nav-link dropdown-toggle">Проекты</a>
+                        <div class="dropdown-menu">
+                            <a href="projects.html#completed" class="dropdown-item">Реализованные</a>
+                            <a href="projects.html#in-progress" class="dropdown-item">В процессе</a>
+                            <a href="projects.html#gallery" class="dropdown-item">Галерея</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="faq.html" class="nav-link dropdown-toggle">Вопросы</a>
+                        <div class="dropdown-menu">
+                            <a href="faq.html#general" class="dropdown-item">Общие вопросы</a>
+                            <a href="faq.html#materials" class="dropdown-item">О материалах</a>
+                            <a href="faq.html#construction" class="dropdown-item">О строительстве</a>
+                            <a href="faq.html#warranty" class="dropdown-item">Гарантии</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="contacts.html" class="nav-link dropdown-toggle">Контакты</a>
+                        <div class="dropdown-menu">
+                            <a href="contacts.html#address" class="dropdown-item">Адрес офиса</a>
+                            <a href="contacts.html#phone" class="dropdown-item">Телефоны</a>
+                            <a href="contacts.html#schedule" class="dropdown-item">График работы</a>
+                            <a href="contacts.html#feedback" class="dropdown-item">Обратная связь</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-contact">
+                <a href="tel:+79611396044" class="phone-link">+7 (961) 139-60-44</a>
+                <button class="btn-callback" data-modal="callback">Заказать звонок</button>
+            </div>
+
+            <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section с анимацией -->
+        <section class="hero" id="hero">
+            <img src="images/about-hero-alt.webp" alt="25 лет традиций деревянного зодчества — команда Сруб России" class="hero-image" loading="eager">
+            
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-main">Традиции</span>
+                        <span class="hero-title-accent">25 лет в дереве</span>
+                    </h1>
+                    <p class="hero-subtitle" style="font-size: 20px; margin-top: 20px; opacity: 0.9;">
+                        Сохраняем искусство ручной рубки, создавая дома для поколений
+                    </p>
+                </div>
+            </div>
+
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Исследуйте</span>
+            </div>
+        </section>
+
+        <!-- Цитата основателя -->
+        <section class="quote-block" id="philosophy">
+            <div class="container">
+                <div class="quote-content">
+                    <span class="quote-icon">"</span>
+                    <p class="quote-text">
+                        Мы не просто строим дома. Мы создаём пространства, где рождаются семейные традиции, 
+                        где каждое бревно дышит историей, а каждый уголок наполнен теплом и уютом.
+                    </p>
+                    <div class="quote-author">Иван Петров</div>
+                    <div class="quote-role">Основатель компании, 2001</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Таймлайн истории -->
+        <section class="timeline" id="history">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 80px;">
+                    <span class="section-title-main">Этапы развития компании</span>
+                    <span class="section-title-accent">в деталях</span>
+                </h2>
+                
+                <div class="timeline-container">
+                    <div class="timeline-item" data-year="2001">
+                        <div class="timeline-year">2001</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Начало пути</h3>
+                            <p class="timeline-text">Основание компании небольшой командой энтузиастов. Первые проекты — бани и гостевые домики в Подмосковье.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-year="2005">
+                        <div class="timeline-year">2006</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Расширение географии</h3>
+                            <p class="timeline-text">Первые крупные проекты за пределами Московской области. Формирование постоянной команды мастеров.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-year="2012">
+                        <div class="timeline-year">2011</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Собственное производство</h3>
+                            <p class="timeline-text">Открытие цеха по обработке древесины. Внедрение современных технологий при сохранении традиционных методов.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-year="2020">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">1000-й проект</h3>
+                            <p class="timeline-text">Реализация тысячного проекта — усадьбы в Тверской области. Команда выросла до 47 специалистов.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-year="2024">
+                        <div class="timeline-year">2026</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Будущее традиций</h3>
+                            <p class="timeline-text">1322+ реализованных проекта. Внедрение экологичных технологий и обучение нового поколения мастеров.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея команды -->
+        <section class="team" id="team" style="padding: 140px 0;">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 60px;">
+                    <span class="section-title-main">Команда</span>
+                    <span class="section-title-accent">мастеров</span>
+                </h2>
+                
+                <div class="team-showcase">
+                    <div class="team-main">
+                        <img src="images/team-main.jpg" alt="Главный архитектор Иван Петров" loading="lazy" 
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 600\"><rect width=\"800\" height=\"600\" fill=\"%2324221a\"/><text x=\"400\" y=\"300\" font-family=\"Arial\" font-size=\"32\" fill=\"%23c1ab61\" text-anchor=\"middle\">Команда мастеров</text></svg>'">
+                        <div class="team-main-overlay">
+                            <h3 class="team-main-name">Иван Петров</h3>
+                            <p class="team-main-role">Главный архитектор, основатель компании</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-sidebar" id="team-sidebar">
+                        <!-- Команда будет загружена через JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Технологии и инновации -->
+        <section class="technologies" id="technologies" style="padding: 100px 0; background: var(--color-bg-light);">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 60px;">
+                    <span class="section-title-main">Технологии</span>
+                    <span class="section-title-accent">и инновации</span>
+                </h2>
+                
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-content">
+                            <span class="tech-icon">⸙</span>
+                            <h3 class="tech-title">Отбор древесины</h3>
+                            <p class="tech-description">Используем только северный лес возрастом 80-120 лет. Каждое бревно проходит 12 этапов проверки.</p>
+                            <div class="tech-details">
+                                <span>Подробнее</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-content">
+                            <span class="tech-icon">⚒</span>
+                            <h3 class="tech-title">Ручная рубка</h3>
+                            <p class="tech-description">Сохраняем традиционные методы рубки "в чашу" и "в лапу". Каждый паз вырубается вручную.</p>
+                            <div class="tech-details">
+                                <span>Подробнее</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-card">
+                        <div class="tech-content">
+                            <span class="tech-icon">⚔︎</span>
+                            <h3 class="tech-title">Защита и обработка</h3>
+                            <p class="tech-description">Экологичные антисептики и противопожарные пропитки. Гарантия от гниения и вредителей - 25 лет.</p>
+                            <div class="tech-details">
+                                <span>Подробнее</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Карта покрытия -->
+        <section class="coverage-map" id="coverage">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">
+                    <span class="section-title-main">География</span>
+                    <span class="section-title-accent">работ</span>
+                </h2>
+                
+                <div class="map-container">
+                    <div class="map-overlay">
+                        <div class="map-stats">
+                            <div class="map-stat">
+                                <div class="map-stat-number">47</div>
+                                <div class="map-stat-label">Регионов России</div>
+                            </div>
+                            <div class="map-stat">
+                                <div class="map-stat-number">1322+</div>
+                                <div class="map-stat-label">Построенных объектов</div>
+                            </div>
+                            <div class="map-stat">
+                                <div class="map-stat-number">25</div>
+                                <div class="map-stat-label">Лет опыта</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Здесь будет карта -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" id="cta" style="background: linear-gradient(135deg, rgba(193, 171, 97, 0.1) 0%, transparent 100%);">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">
+                        <span class="cta-title-accent">Хотите узнать больше</span>
+                        <span class="cta-title-text">о наших традициях?</span>
+                    </h2>
+                    <p class="cta-subtitle">
+                        Приглашаем на экскурсию на наше производство. Увидите процесс создания сруба от бревна до готового дома.
+                    </p>
+                </div>
+
+                <form class="cta-form" id="visit-form" novalidate>
+                    <h3 class="form-title">Записаться на экскурсию</h3>
+                    
+                    <div class="form-group">
+                        <label for="visit-name" class="form-label">Ваше имя *</label>
+                        <input type="text" id="visit-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visit-phone" class="form-label">Телефон *</label>
+                        <input type="tel" id="visit-phone" name="phone" class="form-input" placeholder="+7 (961) 139-60-44" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visit-date" class="form-label">Предпочтительная дата</label>
+                        <input type="text" id="visit-date" name="date" class="form-input" placeholder="Например, 15 апреля" 
+                               onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'">
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="visit-consent" name="consent" required>
+                        <label for="visit-consent" class="checkbox-label">
+                            Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit">Записаться на экскурсию</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="/" class="footer-logo" aria-label="Сруб России">
+                        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2"/>
+                            <text x="55" y="32" fill="currentColor" font-size="20" font-weight="600">СРУБ РОССИИ</text>
+                        </svg>
+                    </a>
+                    <address class="footer-address">
+                        <p class="footer-text">Строительство деревянных домов<br>и срубов из рубленного бревна</p>
+                        <a href="tel:+79611396044" class="footer-link">+7 (961) 139-60-44</a>
+                        <a href="mailto:info@srub-russia.ru" class="footer-link">info@srub-russia.ru</a>
+                        <p class="footer-text">Москва и Московская область</p>
+                    </address>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Навигация</h3>
+                    <nav class="footer-nav" aria-label="Навигация в подвале">
+                        <a href="index.html" class="footer-link">Главная</a>
+                        <a href="about.html" class="footer-link">О компании</a>
+                        <a href="services.html" class="footer-link">Услуги</a>
+                        <a href="projects.html" class="footer-link">Проекты</a>
+                        <a href="contacts.html" class="footer-link">Контакты</a>
+                    </nav>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Информация</h3>
+                    <nav class="footer-nav">
+                        <a href="/privacy-policy.html" class="footer-link">Политика конфиденциальности</a>
+                        <a href="/terms.html" class="footer-link">Условия использования</a>
+                        <a href="/sitemap.xml" class="footer-link">Карта сайта</a>
+                    </nav>
+                    <div class="footer-social">
+                        <a href="https://vk.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+                        <a href="https://instagram.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2026 Сруб России. Все права защищены. Строительство деревянных домов и бань из рубленного бревна. 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div class="modal" id="modal-callback" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal aria-label="Закрыть модальное окно">×</button>
+            <h3 class="modal-title" id="modal-title">Заказать звонок</h3>
+            <p class="modal-subtitle">Оставьте свой номер, и мы перезвоним вам в течение 15 минут</p>
+            
+            <form class="modal-form" id="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="modal-name" class="form-label">Ваше имя *</label>
+                    <input type="text" id="modal-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-phone" class="form-label">Телефон *</label>
+                    <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="+7 (961) 139-60-44" required>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="modal-consent" name="consent" required>
+                    <label for="modal-consent" class="checkbox-label">
+                        Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="form-submit">Заказать звонок</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript для улучшенной страницы -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Стили для выпадающего меню навигации
+            const style = document.createElement('style');
+            style.textContent = `
+                .nav-item.dropdown {
+                    position: relative;
+                }
+                
+                .dropdown-toggle::after {
+                    content: '▼';
+                    font-size: 10px;
+                    margin-left: 6px;
+                    opacity: 0.7;
+                    transition: transform 0.3s ease;
+                }
+                
+                .dropdown-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background: var(--color-bg-card);
+                    min-width: 220px;
+                    padding: 12px 0;
+                    border-radius: 8px;
+                    box-shadow: var(--shadow-lg);
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    border: 1px solid rgba(193, 171, 97, 0.2);
+                }
+                
+                .dropdown-item {
+                    display: block;
+                    padding: 10px 20px;
+                    color: var(--color-gray-light);
+                    font-size: 14px;
+                    transition: all 0.3s ease;
+                }
+                
+                .dropdown-item:hover {
+                    background: rgba(193, 171, 97, 0.1);
+                    color: var(--color-gold);
+                    padding-left: 25px;
+                }
+                
+                .nav-item.dropdown:hover .dropdown-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+                
+                .nav-item.dropdown:hover .dropdown-toggle::after {
+                    transform: rotate(180deg);
+                }
+                
+                @media (max-width: 992px) {
+                    .dropdown-menu {
+                        position: static;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: none;
+                        box-shadow: none;
+                        background: transparent;
+                        padding: 0;
+                        margin-left: 20px;
+                        border: none;
+                        display: none;
+                    }
+                    
+                    .nav-item.dropdown.active .dropdown-menu {
+                        display: block;
+                    }
+                    
+                    .dropdown-item {
+                        padding: 8px 0;
+                        font-size: 16px;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Загрузка команды
+            const teamMembers = [
+                {
+                    name: "Алексей Семенов",
+                    role: "Технический директор",
+                    img: "images/team-main.jpg",
+                    active: false
+                },
+                {
+                    name: "Дмитрий Волков",
+                    role: "Мастер-рубщик",
+                    img: "images/team-3.jpg",
+                    active: false
+                },
+                {
+                    name: "Михаил Орлов",
+                    role: "Прораб",
+                    img: "images/team-4.jpg",
+                    active: false
+                },
+                {
+                    name: "Евгений Смирнов",
+                    role: "Архитектор",
+                    img: "images/team-5.jpg",
+                    active: false
+                }
+            ];
+            
+            const teamSidebar = document.getElementById('team-sidebar');
+            if (teamSidebar) {
+                teamMembers.forEach((member, index) => {
+                    const memberDiv = document.createElement('div');
+                    memberDiv.className = 'team-member-small';
+                    memberDiv.innerHTML = `
+                        <img src="${member.img}" alt="${member.name}" 
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"%23c1ab61\"/><text x=\"50\" y=\"55\" font-family=\"Arial\" font-size=\"40\" fill=\"white\" text-anchor=\"middle\">${member.name.charAt(0)}</text></svg>'">
+                        <div class="team-member-info">
+                            <h4>${member.name}</h4>
+                            <p>${member.role}</p>
+                        </div>
+                    `;
+                    
+                    memberDiv.addEventListener('click', function() {
+                        // Обновляем главное изображение
+                        const mainImage = document.querySelector('.team-main img');
+                        const mainName = document.querySelector('.team-main-name');
+                        const mainRole = document.querySelector('.team-main-role');
+                        
+                        if (mainImage && mainName && mainRole) {
+                            mainImage.src = member.img;
+                            mainName.textContent = member.name;
+                            mainRole.textContent = member.role;
+                            
+                            // Убираем активный класс у всех
+                            document.querySelectorAll('.team-member-small').forEach(el => {
+                                el.classList.remove('active');
+                            });
+                            
+                            // Добавляем активный класс текущему
+                            this.classList.add('active');
+                        }
+                    });
+                    
+                    teamSidebar.appendChild(memberDiv);
+                    
+                    // Первый элемент делаем активным
+                    if (index === 0) {
+                        memberDiv.classList.add('active');
+                    }
+                });
+            }
+            
+            // Анимация таймлайна
+            function animateTimeline() {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                
+                timelineItems.forEach(item => {
+                    const itemPosition = item.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (itemPosition < screenPosition) {
+                        item.classList.add('animate-in');
+                    }
+                });
+            }
+            
+            // Анимация при загрузке и скролле
+            animateTimeline();
+            window.addEventListener('scroll', animateTimeline);
+            
+            // Взаимодействие с технологическими карточками
+            document.querySelectorAll('.tech-details').forEach(detail => {
+                detail.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const card = this.closest('.tech-card');
+                    const description = card.querySelector('.tech-description');
+                    
+                    if (description.style.maxHeight) {
+                        description.style.maxHeight = null;
+                        this.innerHTML = '<span>Подробнее</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+                    } else {
+                        description.style.maxHeight = description.scrollHeight + 'px';
+                        this.innerHTML = '<span>Скрыть</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="transform: rotate(90deg)"><path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+                    }
+                });
+            });
+            
+            // Обработка мобильного меню с выпадающими списками
+            if (window.innerWidth <= 992) {
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 992) {
+                            e.preventDefault();
+                            const parent = this.closest('.nav-item.dropdown');
+                            parent.classList.toggle('active');
+                        }
+                    });
+                });
+            }
+            
+            // Подсветка активной навигации
+            function highlightCurrentSection() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const scrollPosition = window.pageYOffset;
+                    
+                    if (scrollPosition >= sectionTop - 100 && 
+                        scrollPosition < sectionTop + sectionHeight - 100) {
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${section.id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+            
+            // Интерактивная карта статистики
+            const mapStats = document.querySelectorAll('.map-stat-number');
+            mapStats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 30);
+            });
+        });
+    </script>
+
+    <!-- Основные скрипты -->
+    <script src="main.js"></script>
+    <script src="telegram.js"></script>
+    
+</body>
+</html>

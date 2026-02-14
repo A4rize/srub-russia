@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Услуги по Строительству Домов и Бань из Рубленного Бревна | Сруб России</title>
+    <meta name="description" content="Полный спектр услуг: проектирование, строительство домов и бань из рубленного бревна, отделка под ключ. Рассрочка 0%, гарантия качества.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Услуги Сруб России">
+    <meta property="og:description" content="Профессиональное строительство деревянных домов из рубленного бревна">
+    <meta property="og:image" content="images/services-hero.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* === СТИЛИ ДЛЯ СТРАНИЦЫ УСЛУГ === */
+        
+        /* Сетка услуг с иконками */
+        .services-hero-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 80px;
+        }
+        
+        .service-hero-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(193, 171, 97, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-hero-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-gold);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-hero-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-hero-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            color: var(--color-gold);
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-hero-card:hover .service-hero-icon {
+            transform: scale(1.1);
+        }
+        
+        .service-hero-title {
+            font-size: 20px;
+            color: var(--color-white);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .service-hero-description {
+            color: var(--color-gray-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Детальные карточки услуг */
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .service-detail-card {
+            background: var(--color-bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-detail-card.animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .service-detail-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .service-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-detail-card:hover .service-detail-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-detail-content {
+            padding: 40px;
+        }
+        
+        .service-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(193, 171, 97, 0.2);
+        }
+        
+        .service-detail-title {
+            font-size: 24px;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+        
+        .service-detail-price {
+            background: rgba(193, 171, 97, 0.1);
+            color: var(--color-gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .service-detail-features {
+            margin-bottom: 30px;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--color-gray-light);
+            font-size: 15px;
+        }
+        
+        .service-feature::before {
+            content: '✓';
+            color: var(--color-gold);
+            font-weight: bold;
+        }
+        
+        .service-cta {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+        }
+        
+        .btn-service-detail {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-service-primary {
+            background: var(--color-gold);
+            color: var(--color-bg);
+            border: none;
+        }
+        
+        .btn-service-primary:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-service-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-service-secondary:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+        
+        /* Этапы работы */
+        .work-steps {
+            position: relative;
+            padding: 120px 0;
+            background: var(--color-bg-light);
+        }
+        
+        .work-steps-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 80px;
+        }
+        
+        .work-step {
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .work-step::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -15px;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-gold) 0%, transparent 100%);
+        }
+        
+        .work-step:last-child::before {
+            display: none;
+        }
+        
+        .work-step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-gold);
+            color: var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0 auto 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .work-step:hover .work-step-number {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(193, 171, 97, 0.4);
+        }
+        
+        .work-step-title {
+            font-size: 18px;
+            color: var(--color-white);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .work-step-description {
+            color: var(--color-gray-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Сравнительная таблица */
+        .comparison-table {
+            overflow-x: auto;
+            margin-top: 60px;
+            border-radius: 16px;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        th {
+            background: rgba(193, 171, 97, 0.1);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid var(--color-gold);
+        }
+        
+        td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--color-gray-light);
+        }
+        
+        .package-name {
+            color: var(--color-white);
+            font-weight: 600;
+        }
+        
+        .package-price {
+            color: var(--color-gold);
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .check-cell {
+            color: var(--color-gold);
+            font-weight: bold;
+        }
+        
+        .cross-cell {
+            color: var(--color-gray);
+            opacity: 0.5;
+        }
+        
+        /* Калькулятор стоимости */
+        .calculator-container {
+            background: var(--color-bg-card);
+            border-radius: 20px;
+            padding: 60px;
+            margin-top: 60px;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+        }
+        
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .calculator-input-group {
+            margin-bottom: 20px;
+        }
+        
+        .calculator-label {
+            display: block;
+            color: var(--color-white);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .calculator-slider {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .calculator-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .calculator-value {
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-top: 8px;
+            font-size: 18px;
+        }
+        
+        .calculator-result {
+            background: rgba(193, 171, 97, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid rgba(193, 171, 97, 0.2);
+        }
+        
+        .result-label {
+            color: var(--color-gray-light);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .result-value {
+            color: var(--color-gold);
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        /* FAQ для услуг */
+        .services-faq {
+            margin-top: 80px;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .faq-item {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-5px);
+        }
+        
+        .faq-question {
+            color: var(--color-white);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 17px;
+        }
+        
+        .faq-answer {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .services-hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-steps-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .work-step::before {
+                display: none;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-hero-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-container {
+                padding: 30px 20px;
+            }
+            
+            .service-cta {
+                flex-direction: column;
+            }
+            
+            .btn-service-detail {
+                width: 100%;
+            }
+            
+            .service-hero-card,
+            .service-detail-content {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            
+            .service-detail-price {
+                align-self: flex-start;
+            }
+            
+            .result-value {
+                font-size: 28px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .shadow-xl {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-to-main">Перейти к основному содержанию</a>
+
+    <!-- Header с улучшенной навигацией -->
+    <header class="header" id="header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Сруб России - Главная страница">
+                <svg class="logo-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M24 4V44M4 14L44 34M44 14L4 34" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-srub">Сруб</span>
+                    <span class="logo-russia">России</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Основная навигация">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="about.html" class="nav-link dropdown-toggle">О компании</a>
+                        <div class="dropdown-menu">
+                            <a href="about.html#history" class="dropdown-item">Наша история</a>
+                            <a href="about.html#philosophy" class="dropdown-item">Философия</a>
+                            <a href="about.html#team" class="dropdown-item">Команда</a>
+                            <a href="about.html#technologies" class="dropdown-item">Технологии</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link active dropdown-toggle">Услуги</a>
+                        <div class="dropdown-menu">
+                            <a href="#houses" class="dropdown-item">Дома из сруба</a>
+                            <a href="#bathhouses" class="dropdown-item">Бани и сауны</a>
+                            <a href="#design" class="dropdown-item">Проектирование</a>
+                            <a href="#construction" class="dropdown-item">Строительство</a>
+                            <a href="#finishing" class="dropdown-item">Отделка</a>
+                            <a href="#packages" class="dropdown-item">Пакеты услуг</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="features.html" class="nav-link dropdown-toggle">Преимущества</a>
+                        <div class="dropdown-menu">
+                            <a href="features.html#quality" class="dropdown-item">Качество материалов</a>
+                            <a href="features.html#experience" class="dropdown-item">25 лет опыта</a>
+                            <a href="features.html#warranty" class="dropdown-item">Гарантия 10 лет</a>
+                            <a href="features.html#ecology" class="dropdown-item">Экологичность</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="projects.html" class="nav-link dropdown-toggle">Проекты</a>
+                        <div class="dropdown-menu">
+                            <a href="projects.html#completed" class="dropdown-item">Реализованные</a>
+                            <a href="projects.html#in-progress" class="dropdown-item">В процессе</a>
+                            <a href="projects.html#gallery" class="dropdown-item">Галерея</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="faq.html" class="nav-link dropdown-toggle">Вопросы</a>
+                        <div class="dropdown-menu">
+                            <a href="faq.html#general" class="dropdown-item">Общие вопросы</a>
+                            <a href="faq.html#materials" class="dropdown-item">О материалах</a>
+                            <a href="faq.html#construction" class="dropdown-item">О строительстве</a>
+                            <a href="faq.html#warranty" class="dropdown-item">Гарантии</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="contacts.html" class="nav-link dropdown-toggle">Контакты</a>
+                        <div class="dropdown-menu">
+                            <a href="contacts.html#address" class="dropdown-item">Адрес офиса</a>
+                            <a href="contacts.html#phone" class="dropdown-item">Телефоны</a>
+                            <a href="contacts.html#schedule" class="dropdown-item">График работы</a>
+                            <a href="contacts.html#feedback" class="dropdown-item">Обратная связь</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-contact">
+                <a href="tel:+79611396044" class="phone-link">+7 (961) 139 60 44</a>
+                <button class="btn-callback" data-modal="callback">Заказать звонок</button>
+            </div>
+
+            <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <img src="images/services-hero.jpg" alt="Услуги по строительству деревянных домов" class="hero-image" loading="eager">
+            
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-main">Услуги</span>
+                        <span class="hero-title-accent">Сруб России</span>
+                    </h1>
+                    <p class="hero-subtitle" style="font-size: 20px; margin-top: 20px; opacity: 0.9;">
+                        Полный цикл строительства деревянных домов из рубленного бревна
+                    </p>
+                </div>
+                <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Исследуйте услуги</span>
+            </div>
+        </section>
+
+        <!-- Детальные услуги: Дома из сруба -->
+        <section class="services-detail" id="houses" style="padding: 120px 0;">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="section-title-main">Дома из сруба</span>
+                    <span class="section-title-accent">ручной работы</span>
+                </h2>
+                
+                <div class="service-detail-grid">
+                    <div class="service-detail-card">
+                        <div class="service-detail-image">
+                            <img src="images/service-house-1.jpg" alt="Одноэтажные дома из сруба под ключ от 2.5 млн ₽" loading="lazy"
+                                 onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 400\"><rect width=\"800\" height=\"400\" fill=\"%2324221a\"/><text x=\"400\" y=\"200\" font-family=\"Arial\" font-size=\"32\" fill=\"%23c1ab61\" text-anchor=\"middle\">Одноэтажный дом</text></svg>'">
+                        </div>
+                        <div class="service-detail-content">
+                            <div class="service-detail-header">
+                                <h3 class="service-detail-title">Одноэтажные дома</h3>
+                                <span class="service-detail-price">от 2.5 млн ₽</span>
+                            </div>
+                            <p style="color: var(--color-gray-light); margin-bottom: 24px; line-height: 1.6;">
+                                Компактные и уютные дома для круглогодичного проживания. Идеально для небольших семей.
+                            </p>
+                            <div class="service-detail-features">
+                                <div class="service-feature">Площадь: 80-150 м²</div>
+                                <div class="service-feature">Срок строительства: 3-4 месяца</div>
+                                <div class="service-feature">Толщина бревна: 240-300 мм</div>
+                                <div class="service-feature">Входит в стоимость: фундамент, сруб, кровля</div>
+                            </div>
+                            <div class="service-cta">
+                                <button class="btn-service-detail btn-service-primary" data-service="house-single">
+                                    Рассчитать стоимость
+                                </button>
+                                <button class="btn-service-detail btn-service-secondary" data-modal="callback">
+                                    Консультация
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-detail-image">
+                            <img src="images/service-house-2.jpg" alt="Двухэтажные дома из сруба под ключ от 4.5 млн ₽" loading="lazy"
+                                 onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 400\"><rect width=\"800\" height=\"400\" fill=\"%2324221a\"/><text x=\"400\" y=\"200\" font-family=\"Arial\" font-size=\"32\" fill=\"%23c1ab61\" text-anchor=\"middle\">Двухэтажный дом</text></svg>'">
+                        </div>
+                        <div class="service-detail-content">
+                            <div class="service-detail-header">
+                                <h3 class="service-detail-title">Двухэтажные дома</h3>
+                                <span class="service-detail-price">от 4.5 млн ₽</span>
+                            </div>
+                            <p style="color: var(--color-gray-light); margin-bottom: 24px; line-height: 1.6;">
+                                Просторные дома для больших семей. Второй этаж - дополнительные спальни или зона отдыха.
+                            </p>
+                            <div class="service-detail-features">
+                                <div class="service-feature">Площадь: 150-300 м²</div>
+                                <div class="service-feature">Срок строительства: 5-6 месяцев</div>
+                                <div class="service-feature">Толщина бревна: 280-320 мм</div>
+                                <div class="service-feature">Входит в стоимость: все этапы "под ключ"</div>
+                            </div>
+                            <div class="service-cta">
+                                <button class="btn-service-detail btn-service-primary" data-service="house-double">
+                                    Рассчитать стоимость
+                                </button>
+                                <button class="btn-service-detail btn-service-secondary" data-modal="callback">
+                                    Консультация
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Бани и сауны -->
+        <section class="services-detail" id="bathhouses" style="padding: 100px 0; background: var(--color-bg-light);">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="section-title-main">Бани и сауны</span>
+                    <span class="section-title-accent">из рубленного бревна</span>
+                </h2>
+                
+                <div class="service-detail-grid">
+                    <div class="service-detail-card">
+                        <div class="service-detail-image">
+                            <img src="images/service-bath-1.jpg" alt="Традиционная русская баня из сруба под ключ от 1.2 млн ₽" loading="lazy"
+                                 onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 400\"><rect width=\"800\" height=\"400\" fill=\"%2324221a\"/><text x=\"400\" y=\"200\" font-family=\"Arial\" font-size=\"32\" fill=\"%23c1ab61\" text-anchor=\"middle\">Русская баня</text></svg>'">
+                        </div>
+                        <div class="service-detail-content">
+                            <div class="service-detail-header">
+                                <h3 class="service-detail-title">Традиционная русская баня</h3>
+                                <span class="service-detail-price">от 1.2 млн ₽</span>
+                            </div>
+                            <p style="color: var(--color-gray-light); margin-bottom: 24px; line-height: 1.6;">
+                                Классическая баня с парилкой, моечной и комнатой отдыха. Дровяная печь и полки из липы.
+                            </p>
+                            <div class="service-detail-features">
+                                <div class="service-feature">Площадь: 25-60 м²</div>
+                                <div class="service-feature">Срок строительства: 2-3 месяца</div>
+                                <div class="service-feature">Толщина бревна: 200-240 мм</div>
+                                <div class="service-feature">Входит в стоимость: печь, полки, дымоход</div>
+                            </div>
+                            <div class="service-cta">
+                                <button class="btn-service-detail btn-service-primary" data-service="bath-russian">
+                                    Рассчитать стоимость
+                                </button>
+                                <button class="btn-service-detail btn-service-secondary" data-modal="callback">
+                                    Консультация
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-detail-card">
+                        <div class="service-detail-image">
+                            <img src="images/service-bath-2.jpg" alt="Банный комплекс с бассейном из сруба под ключ от 3.5 млн ₽" loading="lazy"
+                                 onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 400\"><rect width=\"800\" height=\"400\" fill=\"%2324221a\"/><text x=\"400\" y=\"200\" font-family=\"Arial\" font-size=\"32\" fill=\"%23c1ab61\" text-anchor=\"middle\">Банный комплекс</text></svg>'">
+                        </div>
+                        <div class="service-detail-content">
+                            <div class="service-detail-header">
+                                <h3 class="service-detail-title">Банный комплекс</h3>
+                                <span class="service-detail-price">от 3.5 млн ₽</span>
+                            </div>
+                            <p style="color: var(--color-gray-light); margin-bottom: 24px; line-height: 1.6;">
+                                Современный комплекс с баней, сауной, бассейном и зоной отдыха. Для полноценного релакса.
+                            </p>
+                            <div class="service-detail-features">
+                                <div class="service-feature">Площадь: 80-150 м²</div>
+                                <div class="service-feature">Срок строительства: 4-5 месяцев</div>
+                                <div class="service-feature">Толщина бревна: 240-280 мм</div>
+                                <div class="service-feature">Входит в стоимость: бассейн, система вентиляции</div>
+                            </div>
+                            <div class="service-cta">
+                                <button class="btn-service-detail btn-service-primary" data-service="bath-complex">
+                                    Рассчитать стоимость
+                                </button>
+                                <button class="btn-service-detail btn-service-secondary" data-modal="callback">
+                                    Консультация
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Этапы работы -->
+        <section class="work-steps" id="construction">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center;">
+                    <span class="section-title-main">Этапы работы</span>
+                    <span class="section-title-accent">от идеи до заселения</span>
+                </h2>
+                
+                <div class="work-steps-container">
+                    <div class="work-step">
+                        <div class="work-step-number">1</div>
+                        <h3 class="work-step-title">Консультация</h3>
+                        <p class="work-step-description">Обсуждение проекта, выезд на участок, расчет предварительной сметы</p>
+                    </div>
+                    
+                    <div class="work-step">
+                        <div class="work-step-number">2</div>
+                        <h3 class="work-step-title">Проектирование</h3>
+                        <p class="work-step-description">Создание индивидуального проекта, согласование планировки и материалов</p>
+                    </div>
+                    
+                    <div class="work-step">
+                        <div class="work-step-number">3</div>
+                        <h3 class="work-step-title">Подготовка</h3>
+                        <p class="work-step-description">Заготовка и обработка древесины, подготовка участка, заливка фундамента</p>
+                    </div>
+                    
+                    <div class="work-step">
+                        <div class="work-step-number">4</div>
+                        <h3 class="work-step-title">Строительство</h3>
+                        <p class="work-step-description">Рубка сруба, монтаж кровли, установка окон и дверей, отделочные работы</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Пакеты услуг -->
+        <section class="packages" id="packages" style="padding: 120px 0;">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center;">
+                    <span class="section-title-main">Пакеты услуг</span>
+                    <span class="section-title-accent">и цены</span>
+                </h2>
+                
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Эконом</th>
+                                <th>Стандарт</th>
+                                <th>Премиум</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="package-name">Проектирование</td>
+                                <td class="check-cell">✓</td>
+                                <td class="check-cell">✓</td>
+                                <td class="check-cell">✓</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Фундамент</td>
+                                <td class="check-cell">Винтовые сваи</td>
+                                <td class="check-cell">Ленточный</td>
+                                <td class="check-cell">УШП</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Сруб</td>
+                                <td class="check-cell">Оцилиндрованное бревно</td>
+                                <td class="check-cell">Рубленное бревно 240мм</td>
+                                <td class="check-cell">Рубленное бревно 300мм+</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Кровля</td>
+                                <td class="check-cell">Металлочерепица</td>
+                                <td class="check-cell">Гибкая черепица</td>
+                                <td class="check-cell">Натуральная черепица</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Отделка</td>
+                                <td class="cross-cell">—</td>
+                                <td class="check-cell">Черновая</td>
+                                <td class="check-cell">Чистовая</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Коммуникации</td>
+                                <td class="cross-cell">—</td>
+                                <td class="check-cell">Разводка</td>
+                                <td class="check-cell">Подключение</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Гарантия</td>
+                                <td>2 года</td>
+                                <td>5 лет</td>
+                                <td>10 лет</td>
+                            </tr>
+                            <tr>
+                                <td class="package-name">Срок строительства</td>
+                                <td>4-5 месяцев</td>
+                                <td>5-6 месяцев</td>
+                                <td>6-8 месяцев</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="package-price">от 2.5 млн ₽</div>
+                                    <button class="btn-service-detail btn-service-primary" style="margin-top: 10px; width: 100%;">
+                                        Выбрать
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="package-price">от 4.5 млн ₽</div>
+                                    <button class="btn-service-detail btn-service-primary" style="margin-top: 10px; width: 100%;">
+                                        Выбрать
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="package-price">от 7.5 млн ₽</div>
+                                    <button class="btn-service-detail btn-service-primary" style="margin-top: 10px; width: 100%;">
+                                        Выбрать
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Калькулятор стоимости -->
+        <section class="calculator" style="padding: 100px 0; background: var(--color-bg-light);">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center;">
+                    <span class="section-title-main">Калькулятор</span>
+                    <span class="section-title-accent">стоимости</span>
+                </h2>
+                
+                <div class="calculator-container">
+                    <div class="calculator-form" id="cost-calculator">
+                        <div class="calculator-input-group">
+                            <label class="calculator-label">Тип строения</label>
+                            <select class="form-input" id="building-type">
+                                <option value="house">Дом</option>
+                                <option value="bathhouse">Баня</option>
+                                <option value="guesthouse">Гостевой дом</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calculator-input-group">
+                            <label class="calculator-label">Площадь, м²</label>
+                            <input type="range" class="calculator-slider" id="area-slider" min="50" max="300" value="150">
+                            <div class="calculator-value" id="area-value">150 м²</div>
+                        </div>
+                        
+                        <div class="calculator-input-group">
+                            <label class="calculator-label">Толщина бревна</label>
+                            <select class="form-input" id="log-thickness">
+                                <option value="200">200 мм</option>
+                                <option value="240">240 мм</option>
+                                <option value="280">280 мм</option>
+                                <option value="320">320 мм</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calculator-input-group">
+                            <label class="calculator-label">Количество этажей</label>
+                            <select class="form-input" id="floors">
+                                <option value="1">1 этаж</option>
+                                <option value="1.5">1.5 этажа</option>
+                                <option value="2">2 этажа</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calculator-input-group">
+                            <label class="calculator-label">Пакет отделки</label>
+                            <select class="form-input" id="finishing">
+                                <option value="none">Без отделки</option>
+                                <option value="basic">Базовая</option>
+                                <option value="premium">Премиум</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calculator-input-group">
+                            <label class="calculator-label">Фундамент</label>
+                            <select class="form-input" id="foundation">
+                                <option value="pile">Винтовые сваи</option>
+                                <option value="strip">Ленточный</option>
+                                <option value="slab">УШП</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-result">
+                        <div class="result-label">Предварительная стоимость</div>
+                        <div class="result-value" id="calculated-price">3 850 000 ₽</div>
+                        <p style="color: var(--color-gray-light); margin-bottom: 20px;">
+                            *Точный расчет будет произведен после замеров на вашем участке
+                        </p>
+                        <button class="form-submit" id="calculate-btn" style="max-width: 300px; margin: 0 auto;">
+                            Получить точный расчет
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="cta" id="cta" style="background: linear-gradient(135deg, rgba(193, 171, 97, 0.1) 0%, transparent 100%);">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">
+                        <span class="cta-title-accent">Готовы обсудить</span>
+                        <span class="cta-title-text">ваш проект?</span>
+                    </h2>
+                    <p class="cta-subtitle">
+                        Получите бесплатную консультацию нашего архитектора и расчет стоимости вашего будущего дома.
+                    </p>
+                </div>
+
+                <form class="cta-form" id="services-form" novalidate>
+                    <h3 class="form-title">Бесплатная консультация</h3>
+                    
+                    <div class="form-group">
+                        <label for="services-name" class="form-label">Ваше имя *</label>
+                        <input type="text" id="services-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="services-phone" class="form-label">Телефон *</label>
+                        <input type="tel" id="services-phone" name="phone" class="form-input" placeholder="+7 (961) 139 60 44" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="services-type" class="form-label">Интересует</label>
+                        <select id="services-type" name="service_type" class="form-input">
+                            <option value="">Выберите услугу</option>
+                            <option value="house">Дом из сруба</option>
+                            <option value="bathhouse">Баня</option>
+                            <option value="design">Проектирование</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="services-consent" name="consent" required>
+                        <label for="services-consent" class="checkbox-label">
+                            Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit">Получить консультацию</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="/" class="footer-logo" aria-label="Сруб России">
+                        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2"/>
+                            <text x="55" y="32" fill="currentColor" font-size="20" font-weight="600">СРУБ РОССИИ</text>
+                        </svg>
+                    </a>
+                    <address class="footer-address">
+                        <p class="footer-text">Строительство деревянных домов<br>и срубов из рубленного бревна</p>
+                        <a href="tel:+79611396044" class="footer-link">+7 (961) 139 60 44</a>
+                        <a href="mailto:info@srub-russia.ru" class="footer-link">info@srub-russia.ru</a>
+                        <p class="footer-text">Москва и Московская область</p>
+                    </address>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Услуги</h3>
+                    <nav class="footer-nav" aria-label="Услуги в подвале">
+                        <a href="#houses" class="footer-link">Дома из сруба</a>
+                        <a href="#bathhouses" class="footer-link">Бани и сауны</a>
+                        <a href="#design" class="footer-link">Проектирование</a>
+                        <a href="#construction" class="footer-link">Строительство</a>
+                        <a href="#finishing" class="footer-link">Отделка</a>
+                    </nav>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Контакты</h3>
+                    <nav class="footer-nav">
+                        <a href="contacts.html#address" class="footer-link">Адрес офиса</a>
+                        <a href="contacts.html#phone" class="footer-link">Телефоны</a>
+                        <a href="contacts.html#schedule" class="footer-link">График работы</a>
+                        <a href="#cta" class="footer-link">Обратная связь</a>
+                    </nav>
+                    <div class="footer-social">
+                        <a href="https://vk.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+                        <a href="https://instagram.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2026 Сруб России. Все права защищены. Строительство деревянных домов и бань из рубленного бревна. 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div class="modal" id="modal-callback" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal aria-label="Закрыть модальное окно">×</button>
+            <h3 class="modal-title" id="modal-title">Заказать звонок</h3>
+            <p class="modal-subtitle">Оставьте свой номер, и мы перезвоним вам в течение 15 минут</p>
+            
+            <form class="modal-form" id="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="modal-name" class="form-label">Ваше имя *</label>
+                    <input type="text" id="modal-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-phone" class="form-label">Телефон *</label>
+                    <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="+7 (961) 139 60 44" required>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="modal-consent" name="consent" required>
+                    <label for="modal-consent" class="checkbox-label">
+                        Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="form-submit">Заказать звонок</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript для страницы услуг -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация появления карточек при скролле
+            const animateCards = () => {
+                const cards = document.querySelectorAll('.service-detail-card');
+                
+                cards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.classList.add('animate-in');
+                    }
+                });
+            };
+            
+            // Плавная навигация по якорям
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Калькулятор стоимости
+            const calculator = document.getElementById('cost-calculator');
+            if (calculator) {
+                const areaSlider = document.getElementById('area-slider');
+                const areaValue = document.getElementById('area-value');
+                const calculatedPrice = document.getElementById('calculated-price');
+                
+                // Базовые цены
+                const basePrices = {
+                    house: 20000,
+                    bathhouse: 25000,
+                    guesthouse: 22000
+                };
+                
+                // Коэффициенты толщины бревна
+                const thicknessCoeff = {
+                    200: 0.9,
+                    240: 1.0,
+                    280: 1.2,
+                    320: 1.4
+                };
+                
+                // Коэффициенты этажей
+                const floorCoeff = {
+                    1: 1.0,
+                    1.5: 1.4,
+                    2: 1.8
+                };
+                
+                // Коэффициенты отделки
+                const finishingCoeff = {
+                    none: 0.8,
+                    basic: 1.0,
+                    premium: 1.3
+                };
+                
+                // Коэффициенты фундамента
+                const foundationCoeff = {
+                    pile: 1.0,
+                    strip: 1.2,
+                    slab: 1.5
+                };
+                
+                function calculatePrice() {
+                    const buildingType = document.getElementById('building-type').value;
+                    const area = parseInt(areaSlider.value);
+                    const thickness = parseInt(document.getElementById('log-thickness').value);
+                    const floors = parseFloat(document.getElementById('floors').value);
+                    const finishing = document.getElementById('finishing').value;
+                    const foundation = document.getElementById('foundation').value;
+                    
+                    // Рассчет стоимости
+                    let price = basePrices[buildingType] * area;
+                    price *= thicknessCoeff[thickness];
+                    price *= floorCoeff[floors];
+                    price *= finishingCoeff[finishing];
+                    price *= foundationCoeff[foundation];
+                    
+                    // Форматирование с пробелами
+                    const formattedPrice = new Intl.NumberFormat('ru-RU').format(Math.round(price));
+                    calculatedPrice.textContent = `${formattedPrice} ₽`;
+                }
+                
+                // Обновление значения площади
+                areaSlider.addEventListener('input', function() {
+                    areaValue.textContent = `${this.value} м²`;
+                    calculatePrice();
+                });
+                
+                // Обновление при изменении других параметров
+                calculator.addEventListener('change', calculatePrice);
+                
+                // Инициализация расчета
+                calculatePrice();
+                
+                // Кнопка "Получить точный расчет"
+                document.getElementById('calculate-btn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Собираем данные для отправки
+                    const formData = {
+                        buildingType: document.getElementById('building-type').value,
+                        area: areaSlider.value,
+                        thickness: document.getElementById('log-thickness').value,
+                        floors: document.getElementById('floors').value,
+                        finishing: document.getElementById('finishing').value,
+                        foundation: document.getElementById('foundation').value,
+                        calculatedPrice: calculatedPrice.textContent
+                    };
+                    
+                    // Здесь можно отправить данные на сервер или открыть модальное окно
+                    console.log('Данные калькулятора:', formData);
+                    
+                    // Открываем модальное окно с предзаполненными данными
+                    const modal = document.getElementById('modal-callback');
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.classList.add('modal-open');
+                    }
+                });
+            }
+            
+            // Взаимодействие с карточками услуг
+            document.querySelectorAll('.service-hero-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const service = this.getAttribute('data-service');
+                    let targetSection;
+                    
+                    switch(service) {
+                        case 'houses':
+                            targetSection = document.getElementById('houses');
+                            break;
+                        case 'bathhouses':
+                            targetSection = document.getElementById('bathhouses');
+                            break;
+                        case 'design':
+                            targetSection = document.getElementById('design');
+                            break;
+                        default:
+                            return;
+                    }
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Кнопки "Рассчитать стоимость" на карточках услуг
+            document.querySelectorAll('.btn-service-primary').forEach(button => {
+                button.addEventListener('click', function() {
+                    const service = this.getAttribute('data-service');
+                    
+                    // Здесь можно настроить калькулятор для конкретной услуги
+                    if (calculator) {
+                        switch(service) {
+                            case 'house-single':
+                                document.getElementById('building-type').value = 'house';
+                                document.getElementById('floors').value = '1';
+                                break;
+                            case 'house-double':
+                                document.getElementById('building-type').value = 'house';
+                                document.getElementById('floors').value = '2';
+                                break;
+                            case 'bath-russian':
+                                document.getElementById('building-type').value = 'bathhouse';
+                                areaSlider.value = 40;
+                                areaValue.textContent = '40 м²';
+                                break;
+                            case 'bath-complex':
+                                document.getElementById('building-type').value = 'bathhouse';
+                                areaSlider.value = 100;
+                                areaValue.textContent = '100 м²';
+                                break;
+                        }
+                        
+                        calculatePrice();
+                        
+                        // Прокрутка к калькулятору
+                        document.querySelector('.calculator').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Инициализация анимаций
+            window.addEventListener('scroll', animateCards);
+            animateCards(); // Инициализация при загрузке
+            
+            // Отслеживание активного раздела
+            function highlightActiveSection() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const scrollPosition = window.pageYOffset;
+                    
+                    if (scrollPosition >= sectionTop - 150 && 
+                        scrollPosition < sectionTop + sectionHeight - 150) {
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${section.id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightActiveSection);
+            
+            // Обработка мобильного меню с выпадающими списками
+            if (window.innerWidth <= 992) {
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 992) {
+                            e.preventDefault();
+                            const parent = this.closest('.nav-item.dropdown');
+                            parent.classList.toggle('active');
+                        }
+                    });
+                });
+            }
+            
+            // Добавляем стили для выпадающего меню (как на странице "О компании")
+            const style = document.createElement('style');
+            style.textContent = `
+                .nav-item.dropdown {
+                    position: relative;
+                }
+                
+                .dropdown-toggle::after {
+                    content: '▼';
+                    font-size: 10px;
+                    margin-left: 6px;
+                    opacity: 0.7;
+                    transition: transform 0.3s ease;
+                }
+                
+                .dropdown-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background: var(--color-bg-card);
+                    min-width: 220px;
+                    padding: 12px 0;
+                    border-radius: 8px;
+                    box-shadow: var(--shadow-lg);
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    border: 1px solid rgba(193, 171, 97, 0.2);
+                }
+                
+                .dropdown-item {
+                    display: block;
+                    padding: 10px 20px;
+                    color: var(--color-gray-light);
+                    font-size: 14px;
+                    transition: all 0.3s ease;
+                }
+                
+                .dropdown-item:hover {
+                    background: rgba(193, 171, 97, 0.1);
+                    color: var(--color-gold);
+                    padding-left: 25px;
+                }
+                
+                .nav-item.dropdown:hover .dropdown-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+                
+                .nav-item.dropdown:hover .dropdown-toggle::after {
+                    transform: rotate(180deg);
+                }
+                
+                @media (max-width: 992px) {
+                    .dropdown-menu {
+                        position: static;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: none;
+                        box-shadow: none;
+                        background: transparent;
+                        padding: 0;
+                        margin-left: 20px;
+                        border: none;
+                        display: none;
+                    }
+                    
+                    .nav-item.dropdown.active .dropdown-menu {
+                        display: block;
+                    }
+                    
+                    .dropdown-item {
+                        padding: 8px 0;
+                        font-size: 16px;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+    <!-- Основные скрипты -->
+    <script src="main.js"></script>
+    <script src="telegram.js"></script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Часто задаваемые вопросы | Сруб России</title>
+    <meta name="description" content="Ответы на популярные вопросы о строительстве из бревна: цены, материалы, сроки, гарантии, обслуживание.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* === СТИЛИ ДЛЯ СТРАНИЦЫ FAQ === */
+        
+        .faq-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(22, 21, 16, 0.7), rgba(22, 21, 16, 0.9)),
+                        url('images/faq-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .category-tab {
+            padding: 15px 30px;
+            background: var(--color-bg-card);
+            border: 2px solid rgba(193, 171, 97, 0.2);
+            color: var(--color-white);
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--color-gold);
+            color: var(--color-bg);
+            border-color: var(--color-gold);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 992px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .faq-card {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-card:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .faq-question-icon {
+            font-size: 24px;
+            color: var(--color-gold);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .faq-card.active .faq-question-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .faq-card.active .faq-answer {
+            padding: 0 30px 25px;
+            max-height: 1000px;
+        }
+        
+        .faq-answer-content {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-gray-light);
+        }
+        
+        .faq-answer-content ul,
+        .faq-answer-content ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .faq-answer-content li {
+            margin-bottom: 8px;
+        }
+        
+        .faq-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .faq-stat {
+            text-align: center;
+            padding: 30px;
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+        }
+        
+        .faq-stat-number {
+            font-size: 48px;
+            color: var(--color-gold);
+            font-weight: 300;
+            line-height: 1;
+        }
+        
+        .faq-stat-label {
+            color: var(--color-gray);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        .expert-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            background: var(--color-bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+        }
+        
+        .expert-photo img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .expert-info h3 {
+            color: var(--color-white);
+            margin-bottom: 10px;
+        }
+        
+        .expert-position {
+            color: var(--color-gold);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .expert-quote {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--color-gray-light);
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid var(--color-gold);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .expert-card {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .faq-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-to-main">Перейти к основному содержанию</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Сруб России - Главная страница">
+                <svg class="logo-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M24 4V44M4 14L44 34M44 14L4 34" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-srub">Сруб</span>
+                    <span class="logo-russia">России</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Основная навигация">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="about.html" class="nav-link dropdown-toggle">О компании</a>
+                        <div class="dropdown-menu">
+                            <a href="about.html#history" class="dropdown-item">Наша история</a>
+                            <a href="about.html#philosophy" class="dropdown-item">Философия</a>
+                            <a href="about.html#team" class="dropdown-item">Команда</a>
+                            <a href="about.html#technologies" class="dropdown-item">Технологии</a>
+                            <a href="about.html#certificates" class="dropdown-item">Сертификаты</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link dropdown-toggle">Услуги</a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#houses" class="dropdown-item">Дома из сруба</a>
+                            <a href="services.html#bathhouses" class="dropdown-item">Бани</a>
+                            <a href="services.html#projects" class="dropdown-item">Проектирование</a>
+                            <a href="services.html#construction" class="dropdown-item">Строительство</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="features.html" class="nav-link dropdown-toggle">Преимущества</a>
+                        <div class="dropdown-menu">
+                            <a href="features.html#quality" class="dropdown-item">Качество материалов</a>
+                            <a href="features.html#experience" class="dropdown-item">25 лет опыта</a>
+                            <a href="features.html#warranty" class="dropdown-item">Гарантия 10 лет</a>
+                            <a href="features.html#ecology" class="dropdown-item">Экологичность</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="projects.html" class="nav-link dropdown-toggle">Проекты</a>
+                        <div class="dropdown-menu">
+                            <a href="projects.html#completed" class="dropdown-item">Реализованные</a>
+                            <a href="projects.html#in-progress" class="dropdown-item">В процессе</a>
+                            <a href="projects.html#gallery" class="dropdown-item">Галерея</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="faq.html" class="nav-link active dropdown-toggle">Вопросы</a>
+                        <div class="dropdown-menu">
+                            <a href="faq.html#general" class="dropdown-item">Общие вопросы</a>
+                            <a href="faq.html#materials" class="dropdown-item">О материалах</a>
+                            <a href="faq.html#construction" class="dropdown-item">О строительстве</a>
+                            <a href="faq.html#warranty" class="dropdown-item">Гарантии</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="contacts.html" class="nav-link dropdown-toggle">Контакты</a>
+                        <div class="dropdown-menu">
+                            <a href="contacts.html#address" class="dropdown-item">Адрес офиса</a>
+                            <a href="contacts.html#phone" class="dropdown-item">Телефоны</a>
+                            <a href="contacts.html#schedule" class="dropdown-item">График работы</a>
+                            <a href="contacts.html#feedback" class="dropdown-item">Обратная связь</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-contact">
+                <a href="tel:+79611396044" class="phone-link">+7 (961) 139-60-44</a>
+                <button class="btn-callback" data-modal="callback">Заказать звонок</button>
+            </div>
+
+            <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="faq-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-main">Ответы на вопросы</span>
+                        <span class="hero-title-accent">о строительстве</span>
+                    </h1>
+                    <p class="hero-subtitle">Всё, что вы хотели знать о домах из рубленого бревна</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Статистика -->
+        <section class="faq-stats-section" style="padding: 80px 0;">
+            <div class="container">
+                <div class="faq-stats">
+                    <div class="faq-stat">
+                        <div class="faq-stat-number">1322+</div>
+                        <div class="faq-stat-label">Построенных объектов</div>
+                    </div>
+                    <div class="faq-stat">
+                        <div class="faq-stat-number">25</div>
+                        <div class="faq-stat-label">Лет опыта</div>
+                    </div>
+                    <div class="faq-stat">
+                        <div class="faq-stat-number">98%</div>
+                        <div class="faq-stat-label">Довольных клиентов</div>
+                    </div>
+                    <div class="faq-stat">
+                        <div class="faq-stat-number">15</div>
+                        <div class="faq-stat-label">мин. средний ответ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Категории вопросов -->
+        <section class="faq-categories" style="padding: 0 0 40px;">
+            <div class="container">
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="all">Все вопросы</button>
+                    <button class="category-tab" data-category="price">Стоимость и оплата</button>
+                    <button class="category-tab" data-category="materials">Материалы</button>
+                    <button class="category-tab" data-category="construction">Строительство</button>
+                    <button class="category-tab" data-category="guarantee">Гарантии</button>
+                    <button class="category-tab" data-category="service">Обслуживание</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Сетка вопросов -->
+        <section class="faq-list" style="padding: 0 0 100px;">
+            <div class="container">
+                <div class="faq-grid" id="faq-grid">
+                    <!-- Вопрос 1 -->
+                    <div class="faq-card" data-category="price">
+                        <div class="faq-question">
+                            <span>Почему нет точных цен на сайте?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Стоимость зависит от многих факторов: размеры дома, материалы, сложность проекта, регион. Мы делаем индивидуальный расчёт после консультации. Примерная стоимость: от 35 000 ₽/м².</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 2 -->
+                    <div class="faq-card" data-category="price">
+                        <div class="faq-question">
+                            <span>Есть ли рассрочка или поэтапная оплата?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Да, мы предлагаем поэтапную оплату (30-40-30) и беспроцентную рассрочку до 12 месяцев. Также помогаем с ипотекой и кредитами на строительство.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 3 -->
+                    <div class="faq-card" data-category="materials">
+                        <div class="faq-question">
+                            <span>Чем рубленое бревно лучше оцилиндрованного?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Рубленое бревно сохраняет верхний защитный слой древесины (заболонь), поэтому оно долговечнее, лучше держит тепло и меньше трескается. Оцилиндровка снимает этот слой.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 4 -->
+                    <div class="faq-card" data-category="construction">
+                        <div class="faq-question">
+                            <span>Сколько ждать усадки? Когда можно заселяться?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Для бревна естественной влажности усадка 5-10% занимает 6-12 месяцев. Если использовать бревно камерной сушки, усадка 2-3% проходит за 3-4 месяца. Заселяться можно сразу с черновой отделкой.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 5 -->
+                    <div class="faq-card" data-category="guarantee">
+                        <div class="faq-question">
+                            <span>Какие гарантии вы даёте на дом?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Гарантия на строительные работы – 5 лет, на материалы – 10 лет, на инженерные системы – 3 года. В первые 3 года проводим ежегодный профилактический осмотр.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 6 -->
+                    <div class="faq-card" data-category="service">
+                        <div class="faq-question">
+                            <span>Как ухаживать за домом из бревна?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Раз в год осматривайте стены и кровлю, раз в 3-5 лет обновляйте защитное покрытие, раз в 10 лет проводите комплексную антисептическую обработку. Мы предоставляем паспорт дома с графиком ухода.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 7 -->
+                    <div class="faq-card" data-category="construction">
+                        <div class="faq-question">
+                            <span>Сколько времени занимает строительство под ключ?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Для дома 100-150 м² – 4-6 месяцев, 150-250 м² – 6-8 месяцев, более 250 м² – 8-12 месяцев. Сроки фиксируются в договоре.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Вопрос 8 -->
+                    <div class="faq-card" data-category="materials">
+                        <div class="faq-question">
+                            <span>Как защищаете сруб от гниения и пожара?</span>
+                            <span class="faq-question-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Используем профессиональные антисептики и антипирены Tikkurila, Remmers. Защита от гниения – на 10-15 лет, огнезащита – II группа огнестойкости.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Экспертное мнение -->
+        <section class="expert-advice" style="padding: 80px 0; background: var(--color-bg-light);">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 60px;">
+                    <span class="section-title-main">Совет</span>
+                    <span class="section-title-accent">эксперта</span>
+                </h2>
+                
+                <div class="expert-card">
+                    <div class="expert-photo">
+                        <img src="images/expert.jpg" alt="Сергей Петров" loading="lazy"
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\"><rect width=\"200\" height=\"200\" fill=\"%23c1ab61\"/><text x=\"100\" y=\"110\" font-family=\"Arial\" font-size=\"80\" fill=\"white\" text-anchor=\"middle\">СП</text></svg>'">
+                    </div>
+                    <div class="expert-info">
+                        <h3>Сергей Петров</h3>
+                        <div class="expert-position">Технический директор, 22 года опыта</div>
+                        <div class="expert-quote">
+                            «Не экономьте на геологии и фундаменте – это основа долговечности дома. Приезжайте к нам на производство, увидите процесс своими глазами».
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA секция -->
+        <section class="cta" id="cta" style="padding: 100px 0;">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">
+                        <span class="cta-title-accent">Остались вопросы?</span>
+                        <span class="cta-title-text">Мы на связи!</span>
+                    </h2>
+                    <p class="cta-subtitle">Наши специалисты ответят на все вопросы и помогут с выбором.</p>
+                </div>
+
+                <div class="cta-contacts" style="display: flex; justify-content: center; gap: 40px; margin: 40px 0; flex-wrap: wrap;">
+                    <div class="contact-item" style="text-align: center;">
+                        <div class="contact-icon" style="font-size: 32px; margin-bottom: 10px;">📞</div>
+                        <a href="tel:+79611396044" class="contact-value" style="font-size: 20px; color: var(--color-gold); text-decoration: none; font-weight: 600;">+7 (961) 139-60-44</a>
+                        <p style="color: var(--color-gray-light); margin-top: 5px; font-size: 14px;">Пн-Пт: 9:00-20:00<br>Сб: 10:00-18:00, Вс: 10:00-16:00</p>
+                    </div>
+                    <div class="contact-item" style="text-align: center;">
+                        <div class="contact-icon" style="font-size: 32px; margin-bottom: 10px;">✉️</div>
+                        <a href="mailto:info@srub-russia.ru" class="contact-value" style="font-size: 20px; color: var(--color-gold); text-decoration: none; font-weight: 600;">info@srub-russia.ru</a>
+                        <p style="color: var(--color-gray-light); margin-top: 5px; font-size: 14px;">Ответим в течение 1 часа</p>
+                    </div>
+                </div>
+
+                <form class="cta-form" id="faq-form" style="max-width: 600px; margin: 0 auto;" novalidate>
+                    <h3 class="form-title">Задайте свой вопрос</h3>
+                    <p class="form-subtitle">Мы ответим в течение 15 минут</p>
+                    
+                    <div class="form-group">
+                        <label for="faq-name" class="form-label">Ваше имя *</label>
+                        <input type="text" id="faq-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="faq-phone" class="form-label">Телефон *</label>
+                        <input type="tel" id="faq-phone" name="phone" class="form-input" placeholder="+7 (961) 139-60-44" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="faq-question" class="form-label">Ваш вопрос *</label>
+                        <textarea id="faq-question" name="question" class="form-input" placeholder="Опишите ваш вопрос..." rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="faq-consent" name="consent" required>
+                        <label for="faq-consent" class="checkbox-label">
+                            Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Отправить вопрос</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="/" class="footer-logo" aria-label="Сруб России">
+                        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2"/>
+                            <text x="55" y="32" fill="currentColor" font-size="20" font-weight="600">СРУБ РОССИИ</text>
+                        </svg>
+                    </a>
+                    <address class="footer-address">
+                        <p class="footer-text">Строительство деревянных домов<br>и срубов из рубленного бревна</p>
+                        <a href="tel:+79611396044" class="footer-link">+7 (961) 139-60-44</a>
+                        <a href="mailto:info@srub-russia.ru" class="footer-link">info@srub-russia.ru</a>
+                        <p class="footer-text">Москва и Московская область</p>
+                    </address>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Навигация</h3>
+                    <nav class="footer-nav" aria-label="Навигация в подвале">
+                        <a href="index.html" class="footer-link">Главная</a>
+                        <a href="about.html" class="footer-link">О компании</a>
+                        <a href="services.html" class="footer-link">Услуги</a>
+                        <a href="projects.html" class="footer-link">Проекты</a>
+                        <a href="contacts.html" class="footer-link">Контакты</a>
+                    </nav>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Информация</h3>
+                    <nav class="footer-nav">
+                        <a href="/privacy-policy.html" class="footer-link">Политика конфиденциальности</a>
+                        <a href="/terms.html" class="footer-link">Условия использования</a>
+                        <a href="/sitemap.xml" class="footer-link">Карта сайта</a>
+                    </nav>
+                    <div class="footer-social">
+                        <a href="https://vk.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+                        <a href="https://instagram.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2026 Сруб России. Все права защищены. 
+                    ИНН: 1234567890 | ОГРН: 1234567890123
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div class="modal" id="modal-callback" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal aria-label="Закрыть модальное окно">×</button>
+            <h3 class="modal-title" id="modal-title">Заказать звонок</h3>
+            <p class="modal-subtitle">Оставьте номер, и мы перезвоним через 15 минут</p>
+            
+            <form class="modal-form" id="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="modal-name" class="form-label">Ваше имя *</label>
+                    <input type="text" id="modal-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-phone" class="form-label">Телефон *</label>
+                    <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="+7 (961) 139-60-44" required>
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="modal-consent" name="consent" required>
+                    <label for="modal-consent" class="checkbox-label">
+                        Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                    </label>
+                </div>
+                <button type="submit" class="form-submit">Заказать звонок</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="main.js"></script>
+    <script src="telegram.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Маска телефона
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0) {
+                        if (value[0] !== '7') value = '7' + value;
+                        let formatted = '+7';
+                        if (value.length > 1) formatted += ' (' + value.substring(1, 4);
+                        if (value.length >= 5) formatted += ') ' + value.substring(4, 7);
+                        if (value.length >= 8) formatted += '-' + value.substring(7, 9);
+                        if (value.length >= 10) formatted += '-' + value.substring(9, 11);
+                        e.target.value = formatted;
+                    }
+                });
+                input.addEventListener('focus', function(e) {
+                    if (!e.target.value) e.target.value = '+7 ';
+                });
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && e.target.value === '+7 ') {
+                        e.preventDefault();
+                        e.target.value = '';
+                    }
+                });
+            });
+
+            // Табы категорий
+            const tabs = document.querySelectorAll('.category-tab');
+            const cards = document.querySelectorAll('.faq-card');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    cards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Аккордеон
+            cards.forEach(card => {
+                const question = card.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    card.classList.toggle('active');
+                });
+            });
+
+            // Стили dropdown
+            const style = document.createElement('style');
+            style.textContent = `
+                .nav-item.dropdown { position: relative; }
+                .dropdown-toggle::after {
+                    content: '▼';
+                    font-size: 10px;
+                    margin-left: 6px;
+                    opacity: 0.7;
+                    transition: transform 0.3s ease;
+                }
+                .dropdown-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background: var(--color-bg-card);
+                    min-width: 220px;
+                    padding: 12px 0;
+                    border-radius: 8px;
+                    box-shadow: var(--shadow-lg);
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                    border: 1px solid rgba(193, 171, 97, 0.2);
+                }
+                .dropdown-item {
+                    display: block;
+                    padding: 10px 20px;
+                    color: var(--color-gray-light);
+                    font-size: 14px;
+                    transition: all 0.3s ease;
+                }
+                .dropdown-item:hover {
+                    background: rgba(193, 171, 97, 0.1);
+                    color: var(--color-gold);
+                    padding-left: 25px;
+                }
+                .nav-item.dropdown:hover .dropdown-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+                .nav-item.dropdown:hover .dropdown-toggle::after {
+                    transform: rotate(180deg);
+                }
+                @media (max-width: 992px) {
+                    .dropdown-menu {
+                        position: static;
+                        opacity: 1;
+                        visibility: visible;
+                        transform: none;
+                        box-shadow: none;
+                        background: transparent;
+                        padding: 0;
+                        margin-left: 20px;
+                        border: none;
+                        display: none;
+                    }
+                    .nav-item.dropdown.active .dropdown-menu {
+                        display: block;
+                    }
+                    .dropdown-item {
+                        padding: 8px 0;
+                        font-size: 16px;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Мобильное меню
+            if (window.innerWidth <= 992) {
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.closest('.nav-item.dropdown').classList.toggle('active');
+                    });
+                });
+            }
+
+            // Анимация статистики
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumbers = entry.target.querySelectorAll('.faq-stat-number');
+                        statNumbers.forEach(stat => {
+                            const text = stat.textContent;
+                            const target = parseInt(text.replace(/\D/g, ''));
+                            const suffix = text.replace(/[0-9]/g, '');
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                stat.textContent = Math.floor(current) + suffix;
+                            }, 30);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const statsSection = document.querySelector('.faq-stats-section');
+            if (statsSection) observer.observe(statsSection);
+        });
+    </script>
+</body>
+</html>

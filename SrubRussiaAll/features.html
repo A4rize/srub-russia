@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Преимущества Сруб России - Почему выбирают нас</title>
+    <meta name="description" content="25 лет опыта, ручная рубка, экологичные материалы, гарантия 10 лет - ключевые преимущества Сруб России в строительстве деревянных домов.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Преимущества Сруб России">
+    <meta property="og:description" content="25 лет качества и традиций в деревянном зодчестве">
+    <meta property="og:image" content="images/features-hero.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* === СТИЛИ ДЛЯ СТРАНИЦЫ ПРЕИМУЩЕСТВ === */
+        
+        /* ===== НОВЫЙ БЛОК: ЭТАПЫ СТРОИТЕЛЬСТВА ===== */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .process-step {
+            background: var(--color-bg-card);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-gold);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .process-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: var(--color-gold);
+        }
+        
+        .process-step h3 {
+            font-size: 22px;
+            color: var(--color-white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .process-step p {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        /* Карточки преимуществ с иконками - исправлено центрирование */
+        .features-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(400px, 600px));
+            justify-content: center;
+            gap: 40px;
+            margin-top: 80px;
+        }
+        .section-title-accent {
+        color: var(--color-gold);
+        display: block;
+        animation: slideInLeft 1s ease 0.7s backwards;
+         text-shadow: 0 0 40px rgba(193, 171, 97, 0.5);
+        }
+        
+        .feature-showcase-card {
+            background: var(--color-bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-showcase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .feature-showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-showcase-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-showcase-icon {
+            font-size: 56px;
+            color: var(--color-gold);
+            flex-shrink: 0;
+        }
+        
+        .feature-showcase-content {
+            flex: 1;
+        }
+        
+        .feature-showcase-title {
+            font-size: 24px;
+            color: var(--color-white);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .feature-showcase-description {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .feature-stats {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .feature-stat {
+            text-align: center;
+        }
+        
+        .feature-stat-number {
+            font-size: 32px;
+            color: var(--color-gold);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .feature-stat-label {
+            font-size: 14px;
+            color: var(--color-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Сравнение технологий */
+        .tech-comparison {
+            position: relative;
+            padding: 120px 0;
+            background: var(--color-bg-light);
+        }
+        
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .comparison-column {
+            background: var(--color-bg-card);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-column:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(193, 171, 97, 0.2);
+        }
+        
+        .comparison-title {
+            font-size: 28px;
+            color: var(--color-white);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .comparison-subtitle {
+            color: var(--color-gold);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .comparison-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .comparison-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .comparison-icon {
+            color: var(--color-gold);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .comparison-text {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+        }
+        
+        /* Инфографика */
+        .infographic {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .infographic-item {
+            text-align: center;
+        }
+        
+        .infographic-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--color-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            font-size: 32px;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+        
+        .infographic-circle::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 1px solid rgba(193, 171, 97, 0.3);
+            border-radius: 50%;
+        }
+        
+        .infographic-title {
+            font-size: 18px;
+            color: var(--color-white);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .infographic-text {
+            color: var(--color-gray-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* Таблица сроков */
+        .timeline-table {
+            overflow-x: auto;
+            margin-top: 60px;
+            border-radius: 16px;
+            border: 1px solid rgba(193, 171, 97, 0.1);
+        }
+        
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-row:hover {
+            background: rgba(193, 171, 97, 0.05);
+        }
+        
+        .timeline-stage {
+            padding: 20px;
+            color: var(--color-white);
+            font-weight: 600;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-details {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .timeline-time {
+            background: var(--color-gold);
+            color: var(--color-bg);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .timeline-description {
+            color: var(--color-gray-light);
+            line-height: 1.6;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .features-showcase {
+                grid-template-columns: 1fr;
+                justify-content: stretch;
+            }
+            
+            .comparison-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .infographic {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .feature-showcase-card {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            .feature-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .timeline-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-stage {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .infographic {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .feature-showcase-title {
+                font-size: 20px;
+            }
+            
+            .comparison-column {
+                padding: 30px 20px;
+            }
+            
+            .infographic-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 28px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(193, 171, 97, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(193, 171, 97, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(193, 171, 97, 0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .shadow-xl {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-to-main">Перейти к основному содержанию</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-overlay"></div>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Сруб России - Главная страница">
+                <svg class="logo-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M24 4V44M4 14L44 34M44 14L4 34" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-srub">Сруб</span>
+                    <span class="logo-russia">России</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Основная навигация">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="about.html" class="nav-link dropdown-toggle">О компании</a>
+                        <div class="dropdown-menu">
+                            <a href="about.html#history" class="dropdown-item">Наша история</a>
+                            <a href="about.html#philosophy" class="dropdown-item">Философия</a>
+                            <a href="about.html#team" class="dropdown-item">Команда</a>
+                            <a href="about.html#technologies" class="dropdown-item">Технологии</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html" class="nav-link dropdown-toggle">Услуги</a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#houses" class="dropdown-item">Дома из сруба</a>
+                            <a href="services.html#bathhouses" class="dropdown-item">Бани и сауны</a>
+                            <a href="services.html#design" class="dropdown-item">Проектирование</a>
+                            <a href="services.html#construction" class="dropdown-item">Строительство</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="features.html" class="nav-link active dropdown-toggle">Преимущества</a>
+                        <div class="dropdown-menu">
+                            <a href="#quality" class="dropdown-item">Качество</a>
+                            <a href="#experience" class="dropdown-item">Опыт</a>
+                            <a href="#technology" class="dropdown-item">Технологии</a>
+                            <a href="#guarantee" class="dropdown-item">Гарантии</a>
+                            <a href="#ecology" class="dropdown-item">Экология</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="projects.html" class="nav-link dropdown-toggle">Проекты</a>
+                        <div class="dropdown-menu">
+                            <a href="projects.html#completed" class="dropdown-item">Реализованные</a>
+                            <a href="projects.html#in-progress" class="dropdown-item">В процессе</a>
+                            <a href="projects.html#gallery" class="dropdown-item">Галерея</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="faq.html" class="nav-link dropdown-toggle">Вопросы</a>
+                        <div class="dropdown-menu">
+                            <a href="faq.html#general" class="dropdown-item">Общие вопросы</a>
+                            <a href="faq.html#materials" class="dropdown-item">О материалах</a>
+                            <a href="faq.html#construction" class="dropdown-item">О строительстве</a>
+                            <a href="faq.html#warranty" class="dropdown-item">Гарантии</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="contacts.html" class="nav-link dropdown-toggle">Контакты</a>
+                        <div class="dropdown-menu">
+                            <a href="contacts.html#address" class="dropdown-item">Адрес офиса</a>
+                            <a href="contacts.html#phone" class="dropdown-item">Телефоны</a>
+                            <a href="contacts.html#schedule" class="dropdown-item">График работы</a>
+                            <a href="contacts.html#feedback" class="dropdown-item">Обратная связь</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-contact">
+                <a href="tel:+79611396044" class="phone-link">+7 (961) 139-60-44</a>
+                <button class="btn-callback" data-modal="callback">Заказать звонок</button>
+            </div>
+
+            <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <img src="images/features-hero.jpg" alt="Преимущества строительства домов из рубленного бревна — качество и долговечность" class="hero-image" loading="eager">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-main">Преимущества</span>
+                        <span class="hero-title-accent">Сруб России</span>
+                    </h1>
+                    <p class="hero-subtitle" style="font-size: 20px; margin-top: 20px; opacity: 0.9;">
+                        25 лет безупречной репутации в строительстве деревянных домов
+                    </p>
+                </div>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Исследуйте преимущества</span>
+            </div>
+        </section>
+
+        <!-- НОВЫЙ БЛОК: Этапы строительства (вместо диаграммы) -->
+        <section class="features-diagram" id="quality" style="padding: 120px 0;">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center;">
+                    <span class="section-title-main">Как мы строим</span>
+                    <span class="section-title-accent">4 этапа вашего будущего дома</span>
+                </h2>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="process-icon">🖇</div>
+                        <h3>Проектирование</h3>
+                        <p>Создаём индивидуальный проект с учётом всех пожеланий и особенностей участка.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">☘</div>
+                        <h3>Заготовка леса</h3>
+                        <p>Отбираем лучший северный лес, проводим ручную рубку и естественную сушку.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">⚒</div>
+                        <h3>Ручная рубка</h3>
+                        <p>Мастера с опытом более 15 лет выполняют рубку с точностью до миллиметра.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-icon">𖠿</div>
+                        <h3>Сборка и отделка</h3>
+                        <p>Монтируем сруб на участке, проводим усадку и выполняем отделку "под ключ".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Сравнение технологий -->
+        <section class="tech-comparison" id="technology">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center;">
+                    <span class="section-title-main">Почему ручная рубка</span>
+                    <span class="section-title-accent">лучше машинной</span>
+                </h2>
+                
+                <div class="comparison-container">
+                    <div class="comparison-column">
+                        <div class="comparison-header">
+                            <h3 class="comparison-title">Ручная рубка</h3>
+                            <div class="comparison-subtitle">Традиционный метод</div>
+                        </div>
+                        
+                        <div class="comparison-features">
+                            <div class="comparison-feature"><div class="comparison-icon">✓</div><p class="comparison-text">Сохранение защитного слоя древесины</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✓</div><p class="comparison-text">Индивидуальная подгонка каждого паза</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✓</div><p class="comparison-text">Естественная усадка без трещин</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✓</div><p class="comparison-text">Срок службы: 100+ лет</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✓</div><p class="comparison-text">Уникальный внешний вид</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-column">
+                        <div class="comparison-header">
+                            <h3 class="comparison-title">Машинная обработка</h3>
+                            <div class="comparison-subtitle">Промышленный метод</div>
+                        </div>
+                        
+                        <div class="comparison-features">
+                            <div class="comparison-feature"><div class="comparison-icon">✗</div><p class="comparison-text">Повреждение защитного слоя</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✗</div><p class="comparison-text">Стандартные размеры, неточные стыки</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✗</div><p class="comparison-text">Трещины при усадке</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✗</div><p class="comparison-text">Срок службы: 50-70 лет</p></div>
+                            <div class="comparison-feature"><div class="comparison-icon">✗</div><p class="comparison-text">Безликий промышленный вид</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Инфографика -->
+        <section class="infographic-section" id="ecology" style="padding: 100px 0; background: var(--color-bg-light);">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">
+                    <span class="section-title-main">1322+ объектов</span>
+                    <span class="section-title-accent">статистика Сруб России</span>
+                </h2>
+                
+                <div class="infographic">
+                    <div class="infographic-item"><div class="infographic-circle">1322+</div><h4 class="infographic-title">Построенных объектов</h4><p class="infographic-text">За 25 лет работы по всей России</p></div>
+                    <div class="infographic-item"><div class="infographic-circle pulse">47</div><h4 class="infographic-title">Мастеров в команде</h4><p class="infographic-text">Средний опыт работы 15 лет</p></div>
+                    <div class="infographic-item"><div class="infographic-circle">100%</div><h4 class="infographic-title">Натуральные материалы</h4><p class="infographic-text">Без химических пропиток</p></div>
+                    <div class="infographic-item"><div class="infographic-circle">10</div><h4 class="infographic-title">Лет гарантии</h4><p class="infographic-text">На конструктив и кровлю</p></div>
+                    <div class="infographic-item"><div class="infographic-circle">25</div><h4 class="infographic-title">Лет на рынке</h4><p class="infographic-text">С 1998 года</p></div>
+                    <div class="infographic-item"><div class="infographic-circle">98%</div><h4 class="infographic-title">Довольных клиентов</h4><p class="infographic-text">По результатам опросов</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Таблица сроков -->
+        <section class="timeline-section" style="padding: 120px 0;">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 60px;">
+                    <span class="section-title-main">Сроки строительства</span>
+                    <span class="section-title-accent">в сравнении</span>
+                </h2>
+                
+                <div class="timeline-table">
+                    <div class="timeline-row"><div class="timeline-stage">Проектирование</div><div class="timeline-details"><span class="timeline-time">1 месяц</span><span class="timeline-description">Разработка индивидуального проекта, согласование всех деталей</span></div></div>
+                    <div class="timeline-row"><div class="timeline-stage">Заготовка древесины</div><div class="timeline-details"><span class="timeline-time">2 месяца</span><span class="timeline-description">Отбор, рубка и естественная сушка бревен на производстве</span></div></div>
+                    <div class="timeline-row"><div class="timeline-stage">Строительство сруба</div><div class="timeline-details"><span class="timeline-time">3-4 месяца</span><span class="timeline-description">Ручная рубка, сборка, монтаж кровли на участке</span></div></div>
+                    <div class="timeline-row"><div class="timeline-stage">Усадка</div><div class="timeline-details"><span class="timeline-time">6-8 месяцев</span><span class="timeline-description">Естественная усадка сруба с компенсаторами</span></div></div>
+                    <div class="timeline-row"><div class="timeline-stage">Отделка "под ключ"</div><div class="timeline-details"><span class="timeline-time">2-3 месяца</span><span class="timeline-description">Коммуникации, внутренняя отделка, установка окон и дверей</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" id="cta" style="background: linear-gradient(135deg, rgba(193, 171, 97, 0.1) 0%, transparent 100%);">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">
+                        <span class="cta-title-accent">Убедились в наших</span>
+                        <span class="cta-title-text">преимуществах?</span>
+                    </h2>
+                    <p class="cta-subtitle">Приглашаем на экскурсию по нашим объектам, чтобы своими глазами увидеть качество нашей работы.</p>
+                </div>
+
+                <form class="cta-form" id="features-form" novalidate>
+                    <h3 class="form-title">Записаться на экскурсию</h3>
+                    
+                    <div class="form-group">
+                        <label for="features-name" class="form-label">Ваше имя *</label>
+                        <input type="text" id="features-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="features-phone" class="form-label">Телефон *</label>
+                        <input type="tel" id="features-phone" name="phone" class="form-input" placeholder="+7 (961) 139-60-44" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="features-object" class="form-label">Объект для посещения</label>
+                        <select id="features-object" name="object" class="form-input">
+                            <option value="">Выберите объект</option>
+                            <option value="production">Производство в Подмосковье</option>
+                            <option value="completed">Завершенный объект</option>
+                            <option value="construction">Объект в процессе строительства</option>
+                        </select>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="features-consent" name="consent" required>
+                        <label for="features-consent" class="checkbox-label">
+                            Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit">Записаться на экскурсию</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="/" class="footer-logo" aria-label="Сруб России">
+                        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L4 14V34L24 44L44 34V14L24 4Z" stroke="currentColor" stroke-width="2"/>
+                            <text x="55" y="32" fill="currentColor" font-size="20" font-weight="600">СРУБ РОССИИ</text>
+                        </svg>
+                    </a>
+                    <address class="footer-address">
+                        <p class="footer-text">Строительство деревянных домов<br>и срубов из рубленного бревна</p>
+                        <a href="tel:+79611396044" class="footer-link">+7 (961) 139-60-44</a>
+                        <a href="mailto:info@srub-russia.ru" class="footer-link">info@srub-russia.ru</a>
+                        <p class="footer-text">Москва и Московская область</p>
+                    </address>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Преимущества</h3>
+                    <nav class="footer-nav" aria-label="Преимущества в подвале">
+                        <a href="#quality" class="footer-link">Качество</a>
+                        <a href="#experience" class="footer-link">Опыт 25 лет</a>
+                        <a href="#technology" class="footer-link">Технологии</a>
+                        <a href="#guarantee" class="footer-link">Гарантии</a>
+                        <a href="#ecology" class="footer-link">Экологичность</a>
+                    </nav>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Контакты</h3>
+                    <nav class="footer-nav">
+                        <a href="contacts.html#address" class="footer-link">Адрес офиса</a>
+                        <a href="contacts.html#phone" class="footer-link">Телефоны</a>
+                        <a href="contacts.html#schedule" class="footer-link">График работы</a>
+                        <a href="#cta" class="footer-link">Обратная связь</a>
+                    </nav>
+                    <div class="footer-social">
+                        <a href="https://vk.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+                        <a href="https://instagram.com/srub_russia" class="footer-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2026 Сруб России. Все права защищены. Строительство деревянных домов и бань из рубленного бревна. 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Window -->
+    <div class="modal" id="modal-callback" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal aria-label="Закрыть модальное окно">×</button>
+            <h3 class="modal-title" id="modal-title">Заказать звонок</h3>
+            <p class="modal-subtitle">Оставьте свой номер, и мы перезвоним вам в течение 15 минут</p>
+            
+            <form class="modal-form" id="modal-form" novalidate>
+                <div class="form-group">
+                    <label for="modal-name" class="form-label">Ваше имя *</label>
+                    <input type="text" id="modal-name" name="name" class="form-input" placeholder="Иван Иванов" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-phone" class="form-label">Телефон *</label>
+                    <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="+7 (961) 139-60-44" required>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="modal-consent" name="consent" required>
+                    <label for="modal-consent" class="checkbox-label">
+                        Я согласен на обработку <a href="/privacy-policy.html" target="_blank">персональных данных</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="form-submit">Заказать звонок</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Стили для выпадающего меню
+            const style = document.createElement('style');
+            style.textContent = `
+                .nav-item.dropdown { position: relative; }
+                .dropdown-toggle::after { content: '▼'; font-size: 10px; margin-left: 6px; opacity: 0.7; transition: transform 0.3s ease; }
+                .dropdown-menu { position: absolute; top: 100%; left: 0; background: var(--color-bg-card); min-width: 220px; padding: 12px 0; border-radius: 8px; box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; border: 1px solid rgba(193, 171, 97, 0.2); }
+                .dropdown-item { display: block; padding: 10px 20px; color: var(--color-gray-light); font-size: 14px; transition: all 0.3s ease; }
+                .dropdown-item:hover { background: rgba(193, 171, 97, 0.1); color: var(--color-gold); padding-left: 25px; }
+                .nav-item.dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+                .nav-item.dropdown:hover .dropdown-toggle::after { transform: rotate(180deg); }
+                @media (max-width: 992px) {
+                    .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: transparent; padding: 0; margin-left: 20px; border: none; display: none; }
+                    .nav-item.dropdown.active .dropdown-menu { display: block; }
+                    .dropdown-item { padding: 8px 0; font-size: 16px; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Анимация при скролле
+            function animateOnScroll() {
+                document.querySelectorAll('.feature-showcase-card, .comparison-column, .infographic-item, .process-step').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight / 1.2) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.feature-showcase-card, .comparison-column, .infographic-item, .process-step').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+            
+            // Таблица сроков
+            document.querySelectorAll('.timeline-row').forEach(row => {
+                row.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+            
+            // Мобильное меню
+            if (window.innerWidth <= 992) {
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.closest('.nav-item.dropdown').classList.toggle('active');
+                    });
+                });
+            }
+            
+            // Плавная навигация по якорям
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({ top: targetElement.offsetTop - 100, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Основные скрипты -->
+    <script src="main.js"></script>
+    <script src="telegram.js"></script>
+</body>
+</html>
